@@ -1,0 +1,12 @@
+ - job:
+    name: iTrustBuildJob
+    project-type: freestyle
+    display-name: iTrustBuildJob
+    concurrent: true
+    workspace: /home/ubuntu/iTrust2-v2/iTrust2
+    retry-count: 3
+    builders:
+      - shell: |
+           sudo mvn process-test-classes
+           sudo mvn clean test verify checkstyle:checkstyle
+    become: yes
